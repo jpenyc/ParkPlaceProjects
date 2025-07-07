@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'projects', # Your new app
+    'home_projects.projects', # Corrected app path
 ]
 
 MIDDLEWARE = [
