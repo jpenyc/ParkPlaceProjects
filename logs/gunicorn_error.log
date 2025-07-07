@@ -1,0 +1,1590 @@
+[2025-07-06 14:22:57 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f143d6d8ee0>
+  on_reload: <function OnReload.on_reload at 0x7f143d6d9000>
+  when_ready: <function WhenReady.when_ready at 0x7f143d6d9120>
+  pre_fork: <function Prefork.pre_fork at 0x7f143d6d9240>
+  post_fork: <function Postfork.post_fork at 0x7f143d6d9360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f143d6d9480>
+  worker_int: <function WorkerInt.worker_int at 0x7f143d6d95a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f143d6d96c0>
+  pre_exec: <function PreExec.pre_exec at 0x7f143d6d97e0>
+  pre_request: <function PreRequest.pre_request at 0x7f143d6d9900>
+  post_request: <function PostRequest.post_request at 0x7f143d6d9990>
+  child_exit: <function ChildExit.child_exit at 0x7f143d6d9ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f143d6d9bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f143d6d9cf0>
+  on_exit: <function OnExit.on_exit at 0x7f143d6d9e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f143d6d9f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:22:57 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:22:57 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:22:57 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:22:57 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:22:57 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:22:57 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:22:57 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:22:57 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:22:57 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:22:57 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:23:05 +0000] [10] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f2049bfcee0>
+  on_reload: <function OnReload.on_reload at 0x7f2049bfd000>
+  when_ready: <function WhenReady.when_ready at 0x7f2049bfd120>
+  pre_fork: <function Prefork.pre_fork at 0x7f2049bfd240>
+  post_fork: <function Postfork.post_fork at 0x7f2049bfd360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f2049bfd480>
+  worker_int: <function WorkerInt.worker_int at 0x7f2049bfd5a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f2049bfd6c0>
+  pre_exec: <function PreExec.pre_exec at 0x7f2049bfd7e0>
+  pre_request: <function PreRequest.pre_request at 0x7f2049bfd900>
+  post_request: <function PostRequest.post_request at 0x7f2049bfd990>
+  child_exit: <function ChildExit.child_exit at 0x7f2049bfdab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f2049bfdbd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f2049bfdcf0>
+  on_exit: <function OnExit.on_exit at 0x7f2049bfde10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f2049bfdf30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:23:05 +0000] [10] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:23:05 +0000] [10] [DEBUG] Arbiter booted
+[2025-07-06 14:23:05 +0000] [10] [INFO] Listening at: http://0.0.0.0:8000 (10)
+[2025-07-06 14:23:05 +0000] [10] [INFO] Using worker: sync
+[2025-07-06 14:23:05 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-07-06 14:23:05 +0000] [11] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:23:05 +0000] [11] [INFO] Worker exiting (pid: 11)
+[2025-07-06 14:23:05 +0000] [10] [ERROR] Worker (pid:11) exited with code 4
+[2025-07-06 14:23:05 +0000] [10] [ERROR] Shutting down: Master
+[2025-07-06 14:23:05 +0000] [10] [ERROR] Reason: App failed to load.
+[2025-07-06 14:23:20 +0000] [10] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fbdd41c0ee0>
+  on_reload: <function OnReload.on_reload at 0x7fbdd41c1000>
+  when_ready: <function WhenReady.when_ready at 0x7fbdd41c1120>
+  pre_fork: <function Prefork.pre_fork at 0x7fbdd41c1240>
+  post_fork: <function Postfork.post_fork at 0x7fbdd41c1360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fbdd41c1480>
+  worker_int: <function WorkerInt.worker_int at 0x7fbdd41c15a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fbdd41c16c0>
+  pre_exec: <function PreExec.pre_exec at 0x7fbdd41c17e0>
+  pre_request: <function PreRequest.pre_request at 0x7fbdd41c1900>
+  post_request: <function PostRequest.post_request at 0x7fbdd41c1990>
+  child_exit: <function ChildExit.child_exit at 0x7fbdd41c1ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fbdd41c1bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fbdd41c1cf0>
+  on_exit: <function OnExit.on_exit at 0x7fbdd41c1e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fbdd41c1f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:23:20 +0000] [10] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:23:20 +0000] [10] [DEBUG] Arbiter booted
+[2025-07-06 14:23:20 +0000] [10] [INFO] Listening at: http://0.0.0.0:8000 (10)
+[2025-07-06 14:23:20 +0000] [10] [INFO] Using worker: sync
+[2025-07-06 14:23:20 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-07-06 14:23:20 +0000] [11] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:23:20 +0000] [11] [INFO] Worker exiting (pid: 11)
+[2025-07-06 14:23:20 +0000] [10] [DEBUG] 1 workers
+[2025-07-06 14:23:20 +0000] [10] [ERROR] Worker (pid:11) exited with code 4
+[2025-07-06 14:23:20 +0000] [10] [ERROR] Shutting down: Master
+[2025-07-06 14:23:20 +0000] [10] [ERROR] Reason: App failed to load.
+[2025-07-06 14:23:48 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f0c3a154ee0>
+  on_reload: <function OnReload.on_reload at 0x7f0c3a155000>
+  when_ready: <function WhenReady.when_ready at 0x7f0c3a155120>
+  pre_fork: <function Prefork.pre_fork at 0x7f0c3a155240>
+  post_fork: <function Postfork.post_fork at 0x7f0c3a155360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f0c3a155480>
+  worker_int: <function WorkerInt.worker_int at 0x7f0c3a1555a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f0c3a1556c0>
+  pre_exec: <function PreExec.pre_exec at 0x7f0c3a1557e0>
+  pre_request: <function PreRequest.pre_request at 0x7f0c3a155900>
+  post_request: <function PostRequest.post_request at 0x7f0c3a155990>
+  child_exit: <function ChildExit.child_exit at 0x7f0c3a155ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f0c3a155bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f0c3a155cf0>
+  on_exit: <function OnExit.on_exit at 0x7f0c3a155e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f0c3a155f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:23:48 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:23:48 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:23:48 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:23:48 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:23:48 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:23:48 +0000] [9] [DEBUG] 1 workers
+[2025-07-06 14:23:48 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:23:48 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:23:48 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:23:48 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:23:48 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:24:41 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fbb105c0ee0>
+  on_reload: <function OnReload.on_reload at 0x7fbb105c1000>
+  when_ready: <function WhenReady.when_ready at 0x7fbb105c1120>
+  pre_fork: <function Prefork.pre_fork at 0x7fbb105c1240>
+  post_fork: <function Postfork.post_fork at 0x7fbb105c1360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fbb105c1480>
+  worker_int: <function WorkerInt.worker_int at 0x7fbb105c15a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fbb105c16c0>
+  pre_exec: <function PreExec.pre_exec at 0x7fbb105c17e0>
+  pre_request: <function PreRequest.pre_request at 0x7fbb105c1900>
+  post_request: <function PostRequest.post_request at 0x7fbb105c1990>
+  child_exit: <function ChildExit.child_exit at 0x7fbb105c1ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fbb105c1bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fbb105c1cf0>
+  on_exit: <function OnExit.on_exit at 0x7fbb105c1e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fbb105c1f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:24:41 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:24:41 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:24:41 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:24:41 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:24:41 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:24:41 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:24:41 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:24:41 +0000] [9] [DEBUG] 1 workers
+[2025-07-06 14:24:41 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:24:41 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:24:41 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:25:05 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f859ebf8ee0>
+  on_reload: <function OnReload.on_reload at 0x7f859ebf9000>
+  when_ready: <function WhenReady.when_ready at 0x7f859ebf9120>
+  pre_fork: <function Prefork.pre_fork at 0x7f859ebf9240>
+  post_fork: <function Postfork.post_fork at 0x7f859ebf9360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f859ebf9480>
+  worker_int: <function WorkerInt.worker_int at 0x7f859ebf95a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f859ebf96c0>
+  pre_exec: <function PreExec.pre_exec at 0x7f859ebf97e0>
+  pre_request: <function PreRequest.pre_request at 0x7f859ebf9900>
+  post_request: <function PostRequest.post_request at 0x7f859ebf9990>
+  child_exit: <function ChildExit.child_exit at 0x7f859ebf9ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f859ebf9bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f859ebf9cf0>
+  on_exit: <function OnExit.on_exit at 0x7f859ebf9e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f859ebf9f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:05 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:05 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:25:05 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:25:05 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:25:05 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:25:05 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:25:05 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:25:05 +0000] [9] [DEBUG] 1 workers
+[2025-07-06 14:25:05 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:25:05 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:25:05 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:25:07 +0000] [10] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fd63764cee0>
+  on_reload: <function OnReload.on_reload at 0x7fd63764d000>
+  when_ready: <function WhenReady.when_ready at 0x7fd63764d120>
+  pre_fork: <function Prefork.pre_fork at 0x7fd63764d240>
+  post_fork: <function Postfork.post_fork at 0x7fd63764d360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fd63764d480>
+  worker_int: <function WorkerInt.worker_int at 0x7fd63764d5a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fd63764d6c0>
+  pre_exec: <function PreExec.pre_exec at 0x7fd63764d7e0>
+  pre_request: <function PreRequest.pre_request at 0x7fd63764d900>
+  post_request: <function PostRequest.post_request at 0x7fd63764d990>
+  child_exit: <function ChildExit.child_exit at 0x7fd63764dab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fd63764dbd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fd63764dcf0>
+  on_exit: <function OnExit.on_exit at 0x7fd63764de10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fd63764df30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:07 +0000] [10] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:07 +0000] [10] [DEBUG] Arbiter booted
+[2025-07-06 14:25:07 +0000] [10] [INFO] Listening at: http://0.0.0.0:8000 (10)
+[2025-07-06 14:25:07 +0000] [10] [INFO] Using worker: sync
+[2025-07-06 14:25:07 +0000] [11] [INFO] Booting worker with pid: 11
+[2025-07-06 14:25:07 +0000] [10] [DEBUG] 1 workers
+[2025-07-06 14:25:07 +0000] [11] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:25:07 +0000] [11] [INFO] Worker exiting (pid: 11)
+[2025-07-06 14:25:07 +0000] [10] [ERROR] Worker (pid:11) exited with code 4
+[2025-07-06 14:25:07 +0000] [10] [ERROR] Shutting down: Master
+[2025-07-06 14:25:07 +0000] [10] [ERROR] Reason: App failed to load.
+[2025-07-06 14:25:09 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7facdf12cee0>
+  on_reload: <function OnReload.on_reload at 0x7facdf12d000>
+  when_ready: <function WhenReady.when_ready at 0x7facdf12d120>
+  pre_fork: <function Prefork.pre_fork at 0x7facdf12d240>
+  post_fork: <function Postfork.post_fork at 0x7facdf12d360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7facdf12d480>
+  worker_int: <function WorkerInt.worker_int at 0x7facdf12d5a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7facdf12d6c0>
+  pre_exec: <function PreExec.pre_exec at 0x7facdf12d7e0>
+  pre_request: <function PreRequest.pre_request at 0x7facdf12d900>
+  post_request: <function PostRequest.post_request at 0x7facdf12d990>
+  child_exit: <function ChildExit.child_exit at 0x7facdf12dab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7facdf12dbd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7facdf12dcf0>
+  on_exit: <function OnExit.on_exit at 0x7facdf12de10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7facdf12df30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:09 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:09 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:25:09 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:25:09 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:25:09 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:25:09 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:25:09 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:25:09 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:25:09 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:25:09 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:25:12 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f8fecb54ee0>
+  on_reload: <function OnReload.on_reload at 0x7f8fecb55000>
+  when_ready: <function WhenReady.when_ready at 0x7f8fecb55120>
+  pre_fork: <function Prefork.pre_fork at 0x7f8fecb55240>
+  post_fork: <function Postfork.post_fork at 0x7f8fecb55360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f8fecb55480>
+  worker_int: <function WorkerInt.worker_int at 0x7f8fecb555a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f8fecb556c0>
+  pre_exec: <function PreExec.pre_exec at 0x7f8fecb557e0>
+  pre_request: <function PreRequest.pre_request at 0x7f8fecb55900>
+  post_request: <function PostRequest.post_request at 0x7f8fecb55990>
+  child_exit: <function ChildExit.child_exit at 0x7f8fecb55ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f8fecb55bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f8fecb55cf0>
+  on_exit: <function OnExit.on_exit at 0x7f8fecb55e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f8fecb55f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:12 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:12 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:25:12 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:25:12 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:25:12 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:25:12 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:25:12 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:25:12 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:25:12 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:25:12 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:25:16 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f1d9a5d0ee0>
+  on_reload: <function OnReload.on_reload at 0x7f1d9a5d1000>
+  when_ready: <function WhenReady.when_ready at 0x7f1d9a5d1120>
+  pre_fork: <function Prefork.pre_fork at 0x7f1d9a5d1240>
+  post_fork: <function Postfork.post_fork at 0x7f1d9a5d1360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f1d9a5d1480>
+  worker_int: <function WorkerInt.worker_int at 0x7f1d9a5d15a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f1d9a5d16c0>
+  pre_exec: <function PreExec.pre_exec at 0x7f1d9a5d17e0>
+  pre_request: <function PreRequest.pre_request at 0x7f1d9a5d1900>
+  post_request: <function PostRequest.post_request at 0x7f1d9a5d1990>
+  child_exit: <function ChildExit.child_exit at 0x7f1d9a5d1ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f1d9a5d1bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f1d9a5d1cf0>
+  on_exit: <function OnExit.on_exit at 0x7f1d9a5d1e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f1d9a5d1f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:16 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:16 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:25:16 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:25:16 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:25:16 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:25:16 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:25:16 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:25:16 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:25:16 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:25:16 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:25:21 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f4ba546cee0>
+  on_reload: <function OnReload.on_reload at 0x7f4ba546d000>
+  when_ready: <function WhenReady.when_ready at 0x7f4ba546d120>
+  pre_fork: <function Prefork.pre_fork at 0x7f4ba546d240>
+  post_fork: <function Postfork.post_fork at 0x7f4ba546d360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f4ba546d480>
+  worker_int: <function WorkerInt.worker_int at 0x7f4ba546d5a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f4ba546d6c0>
+  pre_exec: <function PreExec.pre_exec at 0x7f4ba546d7e0>
+  pre_request: <function PreRequest.pre_request at 0x7f4ba546d900>
+  post_request: <function PostRequest.post_request at 0x7f4ba546d990>
+  child_exit: <function ChildExit.child_exit at 0x7f4ba546dab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f4ba546dbd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f4ba546dcf0>
+  on_exit: <function OnExit.on_exit at 0x7f4ba546de10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f4ba546df30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:21 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:21 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:25:21 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:25:21 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:25:21 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:25:21 +0000] [10] [DEBUG] Exception while loading the application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 414, in import_app
+    app = getattr(mod, name)
+AttributeError: module 'home_projects.wsgi' has no attribute 'application'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 418, in import_app
+    raise AppImportError("Failed to find attribute %r in %r." % (name, module))
+gunicorn.errors.AppImportError: Failed to find attribute 'application' in 'home_projects.wsgi'.
+[2025-07-06 14:25:21 +0000] [9] [DEBUG] 1 workers
+[2025-07-06 14:25:21 +0000] [10] [INFO] Worker exiting (pid: 10)
+[2025-07-06 14:25:21 +0000] [9] [ERROR] Worker (pid:10) exited with code 4
+[2025-07-06 14:25:21 +0000] [9] [ERROR] Shutting down: Master
+[2025-07-06 14:25:21 +0000] [9] [ERROR] Reason: App failed to load.
+[2025-07-06 14:25:29 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fb05d1fcee0>
+  on_reload: <function OnReload.on_reload at 0x7fb05d1fd000>
+  when_ready: <function WhenReady.when_ready at 0x7fb05d1fd120>
+  pre_fork: <function Prefork.pre_fork at 0x7fb05d1fd240>
+  post_fork: <function Postfork.post_fork at 0x7fb05d1fd360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fb05d1fd480>
+  worker_int: <function WorkerInt.worker_int at 0x7fb05d1fd5a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fb05d1fd6c0>
+  pre_exec: <function PreExec.pre_exec at 0x7fb05d1fd7e0>
+  pre_request: <function PreRequest.pre_request at 0x7fb05d1fd900>
+  post_request: <function PostRequest.post_request at 0x7fb05d1fd990>
+  child_exit: <function ChildExit.child_exit at 0x7fb05d1fdab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fb05d1fdbd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fb05d1fdcf0>
+  on_exit: <function OnExit.on_exit at 0x7fb05d1fde10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fb05d1fdf30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:29 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:29 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:25:29 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:25:29 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:25:29 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:25:29 +0000] [9] [DEBUG] 1 workers
+[2025-07-06 14:25:58 +0000] [9] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /app/logs/gunicorn_access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /app/logs/gunicorn_error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: home_projects.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fe218a30ee0>
+  on_reload: <function OnReload.on_reload at 0x7fe218a31000>
+  when_ready: <function WhenReady.when_ready at 0x7fe218a31120>
+  pre_fork: <function Prefork.pre_fork at 0x7fe218a31240>
+  post_fork: <function Postfork.post_fork at 0x7fe218a31360>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fe218a31480>
+  worker_int: <function WorkerInt.worker_int at 0x7fe218a315a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fe218a316c0>
+  pre_exec: <function PreExec.pre_exec at 0x7fe218a317e0>
+  pre_request: <function PreRequest.pre_request at 0x7fe218a31900>
+  post_request: <function PostRequest.post_request at 0x7fe218a31990>
+  child_exit: <function ChildExit.child_exit at 0x7fe218a31ab0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fe218a31bd0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fe218a31cf0>
+  on_exit: <function OnExit.on_exit at 0x7fe218a31e10>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fe218a31f30>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  header_map: drop
+  tolerate_dangerous_framing: False
+[2025-07-06 14:25:58 +0000] [9] [INFO] Starting gunicorn 22.0.0
+[2025-07-06 14:25:58 +0000] [9] [DEBUG] Arbiter booted
+[2025-07-06 14:25:58 +0000] [9] [INFO] Listening at: http://0.0.0.0:8000 (9)
+[2025-07-06 14:25:58 +0000] [9] [INFO] Using worker: sync
+[2025-07-06 14:25:58 +0000] [10] [INFO] Booting worker with pid: 10
+[2025-07-06 14:25:58 +0000] [9] [DEBUG] 1 workers

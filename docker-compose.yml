@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:13-alpine # Use a lightweight PostgreSQL image
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/ # Persistent data volume
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5436:5432" # Expose DB port (optional, but useful for local tools)
+
+  web:
+    build: . # Build from the Dockerfile in the current directory
+    # Updated command to use 'python manage.py ...' for compatibility with manage.py in the project root
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn home_projects.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - .:/app # Mount the current directory into the container for live code changes
+      - ./logs:/app/logs # Mount a host directory for logs
+    ports:
+      - "8144:8000" # Map host port 8144 to container port 8000 (where Gunicorn runs)
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: db # Hostname of the database service within the Docker network
+      DB_PORT: 5432
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY} # Django secret key
+      DJANGO_DEBUG: ${DJANGO_DEBUG} # Django debug mode
+      LOG_LEVEL: DEBUG # Custom log level for Django and Gunicorn
+      GUNICORN_CMD_ARGS: "--log-level debug --access-logfile /app/logs/gunicorn_access.log --error-logfile /app/logs/gunicorn_error.log"
+      PYTHONPATH: /app/home_projects
+    depends_on:
+      - db # Ensure the database starts before the web app
+    restart: always # Always restart if the container stops
+
+volumes:
+  postgres_data: # Define the named volume for PostgreSQL data
